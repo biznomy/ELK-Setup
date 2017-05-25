@@ -26,7 +26,7 @@ Elasticsearch is used for search, analyze, and store data. Elasticsearch provide
   sha1sum elasticsearch-5.4.0.deb 
   sudo dpkg -i elasticsearch-5.4.0.deb
 
- # Elasticsearch start and stop using the service command:
+# Elasticsearch start and stop using the service command:
 
   sudo -i service elasticsearch start
   sudo -i service elasticsearch stop
