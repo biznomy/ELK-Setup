@@ -2,8 +2,7 @@
 
 Elasticsearch is used for search, analyze, and store data. Elasticsearch provide JSON-based search and analytics engine designed for horizontal scalability, maximum reliability, and easy management.
  
- 
- ### Installation using .zip package
+  ### Installation using .zip package
 
 ```markdown
 
@@ -33,15 +32,15 @@ Elasticsearch is used for search, analyze, and store data. Elasticsearch provide
   sudo -i service elasticsearch stop
   
 ```
-### Now Check on browser at http://localhost:9200
-### Note : For more help https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html
+ Now Check on browser at http://localhost:9200
+ For more details see [Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html)
 
 ## Kibana 
 
 Kibana is an open source, Used for browser-based analytics and search on Elasticsearch.Kibana gives shape to your data and user interface (UI) for configuring and managing the Elastic Stack.
 
 
-### Installation using .zip package
+ ### Installation using .zip package
 
 ```markdown
 
@@ -75,8 +74,8 @@ Kibana is an open source, Used for browser-based analytics and search on Elastic
   sudo -i service kibana stop
   
 ```
-### Now Check on browser at http://localhost:5601
-### Note : For more help https://www.elastic.co/guide/en/kibana/current/install.html 
+ Now Check on browser at http://localhost:5601
+ For more details see [Kibana](https://www.elastic.co/guide/en/kibana/current/install.html).
 
 ## X-Pack 
 
@@ -116,21 +115,61 @@ Logstash is an open source,data processing pipeline.Logstash supports a variety 
 
 
 ```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+  [Download Logstash](https://artifacts.elastic.co/downloads/logstash/logstash-5.4.0.tar.gz)
+  tar -xzf logstash-5.4.0.tar.gz
+  cd logstash-5.4.0/
+  ./bin/logstash -f < .. here path of .conf file .. >
+ 
 ```
+ 
+ ### Note: Example of Apache logs parser logstah .conf file.
+  
+  ```markdown
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+  input {
+     file {
+       path => "/var/log/apache2/*.log"
+     }
+   }
+
+   filter {
+       mutate { replace => { type => "apache" } }
+       grok {
+         match => { "message" => "%{COMBINEDAPACHELOG}" }
+       }
+       date {
+         match => [ "timestamp" , "dd/MMM/yyyy:HH:mm:ss Z" ]
+       }
+       mutate {
+         convert => {
+             "response" => "integer" 
+             "bytes" => "integer"
+         }
+       }
+
+       geoip {
+         source => "clientip"
+         target => "geoip"
+         add_field => [ "[geoip][coordinates]", "%{[geoip][longitude]}" ]
+         add_field => [ "[geoip][coordinates]", "%{[geoip][latitude]}"  ]
+       }
+       mutate {
+         convert => [ "[geoip][coordinates]", "float"]
+       }
+
+   }
+
+   output {
+     elasticsearch { 
+        hosts => ["localhost:9200"]
+        manage_template => false
+        index => "logstash-%{+YYYY.MM.dd}"
+        document_type => "apache"
+        user => "elastic"
+        password => "changeme"
+     }
+     stdout { codec => rubydebug }
+   }
+ 
+  ```
