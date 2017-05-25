@@ -3,15 +3,30 @@
 Elasticsearch is used for search, analyze, and store data. Elasticsearch provide JSON-based search and analytics engine designed for horizontal scalability, maximum reliability, and easy management.
 
 
+ ### Installation using .zip package
+
 ```markdown
 
-# Installation using .deb package
+  wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.4.0.zip
+  sha1sum elasticsearch-5.4.0.zip 
+  unzip elasticsearch-5.4.0.zip
+  cd elasticsearch-5.4.0/ 
+
+   # Elasticsearch start and stop using the service command:
+    start > ./bin/elasticsearch
+    stop > pressing Ctrl-C
+    
+```
+
+### Installation using .deb package
+
+```markdown
 
   wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.4.0.deb
   sha1sum elasticsearch-5.4.0.deb 
   sudo dpkg -i elasticsearch-5.4.0.deb
 
-# Elasticsearch start and stop using the service command:
+ # Elasticsearch start and stop using the service command:
 
   sudo -i service elasticsearch start
   sudo -i service elasticsearch stop
