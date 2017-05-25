@@ -2,7 +2,7 @@
 
 Elasticsearch is used for search, analyze, and store data. Elasticsearch provide JSON-based search and analytics engine designed for horizontal scalability, maximum reliability, and easy management.
  
-  ### Installation using .zip package
+ ### Installation using .zip package
 
 ```markdown
 
@@ -11,7 +11,7 @@ Elasticsearch is used for search, analyze, and store data. Elasticsearch provide
   unzip elasticsearch-5.4.0.zip
   cd elasticsearch-5.4.0/ 
 
-   # Elasticsearch start and stop using the service command:
+# Elasticsearch start and stop using the service command:
     ##Note: start > 
       $ ./bin/elasticsearch
     ##Note: stop > pressing Ctrl-C
@@ -40,18 +40,18 @@ Elasticsearch is used for search, analyze, and store data. Elasticsearch provide
 Kibana is an open source, Used for browser-based analytics and search on Elasticsearch.Kibana gives shape to your data and user interface (UI) for configuring and managing the Elastic Stack.
 
 
- ### Installation using .zip package
+### Installation using .zip package
 
 ```markdown
 
-  # Note: Change Linux 64bit package kibana-5.4.0-linux-x86_64.tar.gz or Linux 32bit package kibana-5.4.0-linux-x86.tar.gz
+# Note: Change Linux 64bit package kibana-5.4.0-linux-x86_64.tar.gz or Linux 32bit package kibana-5.4.0-linux-x86.tar.gz
   
    wget https://artifacts.elastic.co/downloads/kibana/kibana-5.4.0-linux-x86_64.tar.gz  
    sha1sum kibana-5.4.0-linux-x86_64.tar.gz 
    tar -xzf kibana-5.4.0-linux-x86_64.tar.gz
    cd kibana/ 
 
-   # Kibana start and stop using the service command:
+# Kibana start and stop using the service command:
     ##Note: start > 
       $ ./bin/kibana
     ##Note: stop > pressing Ctrl-C
@@ -62,13 +62,13 @@ Kibana is an open source, Used for browser-based analytics and search on Elastic
 
 ```markdown
 
-  # Note: Change Linux 64bit package kibana-5.4.0-amd64.deb or Linux 32bit package kibana-5.4.0-i386.deb
+# Note: Change Linux 64bit package kibana-5.4.0-amd64.deb or Linux 32bit package kibana-5.4.0-i386.deb
 
   wget https://artifacts.elastic.co/downloads/kibana/kibana-5.4.0-amd64.deb
   sha1sum kibana-5.4.0-amd64.deb 
   sudo dpkg -i kibana-5.4.0-amd64.deb
 
- # Kibana start and stop using the service command:
+# Kibana start and stop using the service command:
 
   sudo -i service kibana start
   sudo -i service kibana stop
@@ -89,8 +89,8 @@ X-Pack is a plugin for Both Elasticsearch and Kibana. X-Pack is a combination of
 
 ```markdown
 
-  # Installation in Elastic
-  ## Note default Username:elastic and Password:changeme
+# Installation in Elastic
+## Note default Username:elastic and Password:changeme
   
   1 Install X-Pack into Elasticsearch
     bin/elasticsearch-plugin install x-pack
@@ -98,8 +98,8 @@ X-Pack is a plugin for Both Elasticsearch and Kibana. X-Pack is a combination of
   2 Start Elasticsearch
     bin/elasticsearch
 
- # Installation in Kibana
- ## Note default Username:kibana and Password:changeme
+# Installation in Kibana
+## Note default Username:kibana and Password:changeme
   
   1 Install X-Pack into Kibana
     bin/kibana-plugin install x-pack
