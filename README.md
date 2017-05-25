@@ -1,8 +1,8 @@
 ## Elasticsearch 
 
 Elasticsearch is used for search, analyze, and store data. Elasticsearch provide JSON-based search and analytics engine designed for horizontal scalability, maximum reliability, and easy management.
-
-
+ 
+ 
  ### Installation using .zip package
 
 ```markdown
@@ -13,8 +13,9 @@ Elasticsearch is used for search, analyze, and store data. Elasticsearch provide
   cd elasticsearch-5.4.0/ 
 
    # Elasticsearch start and stop using the service command:
-    start > ./bin/elasticsearch
-    stop > pressing Ctrl-C
+    ##Note: start > 
+      $ ./bin/elasticsearch
+    ##Note: stop > pressing Ctrl-C
     
 ```
 
@@ -32,10 +33,50 @@ Elasticsearch is used for search, analyze, and store data. Elasticsearch provide
   sudo -i service elasticsearch stop
   
 ```
+### Now Check on browser at http://localhost:9200
+### Note : For more help https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html
 
 ## Kibana 
 
 Kibana is an open source, Used for browser-based analytics and search on Elasticsearch.Kibana gives shape to your data and user interface (UI) for configuring and managing the Elastic Stack.
+
+
+### Installation using .zip package
+
+```markdown
+
+  # Note: Change Linux 64bit package kibana-5.4.0-linux-x86_64.tar.gz or Linux 32bit package kibana-5.4.0-linux-x86.tar.gz
+  
+   wget https://artifacts.elastic.co/downloads/kibana/kibana-5.4.0-linux-x86_64.tar.gz  
+   sha1sum kibana-5.4.0-linux-x86_64.tar.gz 
+   tar -xzf kibana-5.4.0-linux-x86_64.tar.gz
+   cd kibana/ 
+
+   # Kibana start and stop using the service command:
+    ##Note: start > 
+      $ ./bin/kibana
+    ##Note: stop > pressing Ctrl-C
+    
+```
+
+### Installation using .deb package
+
+```markdown
+
+  # Note: Change Linux 64bit package kibana-5.4.0-amd64.deb or Linux 32bit package kibana-5.4.0-i386.deb
+
+  wget https://artifacts.elastic.co/downloads/kibana/kibana-5.4.0-amd64.deb
+  sha1sum kibana-5.4.0-amd64.deb 
+  sudo dpkg -i kibana-5.4.0-amd64.deb
+
+ # Kibana start and stop using the service command:
+
+  sudo -i service kibana start
+  sudo -i service kibana stop
+  
+```
+### Now Check on browser at http://localhost:5601
+### Note : For more help https://www.elastic.co/guide/en/kibana/current/install.html 
 
 ## X-Pack 
 
@@ -93,11 +134,3 @@ Syntax highlighted code block
 ```
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/technolabshq/ELK-Setup/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
